@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class= "text-center p-3"> Test CRUD Rebits </h1>
+<div class="p-5 table-responsive"> <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">MARCA</th>
+      <th scope="col">MODELO</th>
+      <th scope="col">ANIO</th>
+      <th scope="col">DUENO</th>
+      <th scope="col">PRECIO</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    @foreach  ($data as $item)
+    <tr>
+      <th>{{$item->marca}}</th>
+      <td>{{$item->modelo}}</td>
+      <td>{{$item->anio}}</td>
+      <td>{{$item->dueno_actual_id}}</td>
+      <td>{{$item->precio}}</td>
+    </tr>
+    @endforeach
+  </tbody>
+</table></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html> 
