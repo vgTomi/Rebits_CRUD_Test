@@ -20,3 +20,11 @@ Route::post("/agregar-vehiculo", [CrudController::class, "create"])->name("crud.
 //Route::get("/", "app\http\Controllers\CrudController@index")->name("crud.index");
 
 Route::post("/modificar-vehiculo", [CrudController::class,"update"])->name("crud.update");
+
+Route::post("/agregar-usuario", [CrudController::class,"usercreate"])->name("crud.usercreate");
+
+Route::post("/modificar-usuario", [CrudController::class,"usermodify"])->name("crud.usermodify");
+
+Route::get("/usuario", [CrudController::class,"usuario"])->name("crud.usuario");
+
+Route::get("/historico", [CrudController::class,"historico"])->name("crud.historico");

@@ -16,12 +16,12 @@
     @if (session("incorrecto"))
     <div class="alert alert-danger">{{session("incorrecto")}}</div>
     @endif
-    <!-- Modal Agregar -->
+    <!-- Modal Agregar Vehiculo-->
     <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Marca</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Vehiculo</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -61,8 +61,47 @@
             </div>
         </div>
     </div>
+    <!-- Modal Agregar Usuario-->
+    <div class="modal fade" id="createUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registro Usuario</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route("crud.usercreate")}}" method="post">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="textonombre">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="textoapellidos">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Correo</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="textocorreo">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="sumbit" class="btn btn-primary">Registrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="p-5 table-responsive">
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal">Agregar Vehiculo</button>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createUser">Crear Usuario</button>
+        <a href="{{ route("crud.usuario") }}" class="btn btn-success">Vista Usuarios</a>
+        <a href="{{ route("crud.historico") }}" class="btn btn-success">Vista Historico</a>
         <table class="table table-hover table-striped table-bordered">
             <thead class="table-dark">
                 <tr>
@@ -86,7 +125,7 @@
                         <input class="btn btn-primary" type="submit" value="Delete">
                     </th>
 
-                    <!-- Modal -->
+                    <!-- Modal Modificar Vehiculo-->
                     <div class="modal fade" id="editModal{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -95,16 +134,16 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{route("crud.update")}}">
+                                    <form action="{{route("crud.update")}}" method="post">
                                         @csrf
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">CODIGO VEHICULO</label>
-                                            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="textoprecio" value="{{$item->id}}" readonly>
+                                            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="textoid" value="{{$item->id}}" readonly>
 
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">PRECIO</label>
-                                            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="textoprecio">
+                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="textoprecio">
 
                                         </div>
                                         <div class="mb-3">
@@ -114,7 +153,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                            <button type="button" class="btn btn-primary">Modificar</button>
+                                            <button type="sumbit" class="btn btn-primary">Modificar</button>
                                         </div>
                                     </form>
                                 </div>
