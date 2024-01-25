@@ -43,11 +43,26 @@ CREATE TABLE usuarios (
     CONSTRAINT usuarios_pkey PRIMARY KEY (id)
 );
 
+CREATE TABLE vehiculos (
+	id serial4 NOT NULL,
+	marca varchar(100) NULL,
+	modelo varchar(100) NULL,
+	anio int4 NULL,
+	dueno_actual_id int4 NULL,
+	precio int4 NULL,
+	CONSTRAINT vehiculos_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE historico_duenos (
+	id serial4 NOT NULL,
+	vehiculo_id int4 NULL,
+	dueno_id int4 NULL,
+	fecha_cambio timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT historico_duenos_pkey PRIMARY KEY (id)
+);
+
+
+ALTER TABLE public.historico_duenos ADD CONSTRAINT historico_duenos_antiguo_dueno_id_fkey FOREIGN KEY (dueno_id) REFERENCES usuarios(id);
+ALTER TABLE public.historico_duenos ADD CONSTRAINT historico_duenos_vehiculo_id_fkey FOREIGN KEY (vehiculo_id) REFERENCES vehiculos(id);
+
 ```
-## Licencia
-
-Este proyecto está bajo la licencia [Nombre de la Licencia]. Consulta el archivo LICENSE.md para obtener más detalles.
-
----
-
-Espero que encuentres útil esta versión mejorada del README. Si tienes alguna pregunta o necesitas más ajustes, no dudes en decírmelo.
