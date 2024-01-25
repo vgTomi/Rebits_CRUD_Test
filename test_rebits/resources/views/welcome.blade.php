@@ -10,6 +10,7 @@
 
 <body>
     <h1 class="text-center p-3"> CRUD Rebits: Vista Vehiculos  </h1>
+    <h1 class="text-center p-2"> Para agregar vehiculos, debe existir un usuario/dueno  </h1>
     @if (session("correcto"))
     <div class="alert alert-success">{{session("correcto")}}</div>
     @endif

@@ -1,14 +1,19 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
+
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Http\Controllers\CrudController;
+use Illuminate\Support\Facades\DB;
 
-class CrudControllerTesting extends TestCase
+class CrudControllerTest extends TestCase
 {
     /** @test */
-    public function index_method_returns_view_with_data()
+    public function testIndex()
     {
         // Arrange
         $controller = new CrudController();
@@ -20,4 +25,5 @@ class CrudControllerTesting extends TestCase
         $response->assertViewIs('welcome'); // Verifica que la vista devuelta sea 'welcome'
         $response->assertViewHas('data');    // Verifica que la vista tiene la variable $data
     }
+
 }
