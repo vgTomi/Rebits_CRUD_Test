@@ -18,3 +18,5 @@ Route::get("/", [CrudController::class, "index"])->name("crud.index");
 //
 Route::post("/agregar-vehiculo", [CrudController::class, "create"])->name("crud.create"); 
 //Route::get("/", "app\http\Controllers\CrudController@index")->name("crud.index");
+
+Route::post("/modificar-vehiculo", [CrudController::class,"update"])->name("crud.update");

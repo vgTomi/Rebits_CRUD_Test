@@ -10,6 +10,12 @@
 
 <body>
     <h1 class="text-center p-3"> Test CRUD Rebits </h1>
+    @if (session("correcto"))
+    <div class="alert alert-success">{{session("correcto")}}</div>
+    @endif
+    @if (session("incorrecto"))
+    <div class="alert alert-danger">{{session("incorrecto")}}</div>
+    @endif
     <!-- Modal Agregar -->
     <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -43,7 +49,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Precio</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="textcodigo">
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="textprecio">
 
                         </div>
                         <div class="modal-footer">
@@ -73,15 +79,15 @@
                     <th>{{$item->marca}}</th>
                     <td>{{$item->modelo}}</td>
                     <td>{{$item->anio}}</td>
-                    <td>{{$item->dueno_actual_id}}</td>
+                    <td>{{$item->nombre. ' ' .$item->apellidos}}</td>
                     <td>${{$item->precio}}</td>
                     <th>
-                        <input data-bs-toggle="modal" data-bs-target="#editModal" class="btn btn-primary" type="button" value="Edit">
+                        <input data-bs-toggle="modal" data-bs-target="#editModal{{$item->id}}" class="btn btn-primary" type="button" value="Edit">
                         <input class="btn btn-primary" type="submit" value="Delete">
                     </th>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editModal{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -89,15 +95,21 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form action="{{route("crud.update")}}">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">CODIGO VEHICULO</label>
+                                            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="textoprecio" value="{{$item->id}}" readonly>
+
+                                        </div>
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">PRECIO</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="txtcodigo">
+                                            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="textoprecio">
 
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">DUENO</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="txtcodigo">
+                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="textodueno">
 
                                         </div>
                                         <div class="modal-footer">
