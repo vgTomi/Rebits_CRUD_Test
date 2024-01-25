@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<h1 class="text-center p-3"> Vista Historico  </h1>
   <div class="p-5 table-responsive">
   <a href="/" class="btn btn-danger">Volver Inicio</a>
     <table class="table table-hover table-striped table-bordered">

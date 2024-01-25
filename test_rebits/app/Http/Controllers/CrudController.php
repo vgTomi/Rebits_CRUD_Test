@@ -57,17 +57,26 @@ class CrudController extends Controller
                 ->first();
 
 
-            $sql = DB::table('vehiculos')
+            
+            if($nuevoDueno->id){
+                DB::table('historico_duenos')->insert([
+                    'vehiculo_id' => $request->textoid,
+                    'dueno_id' => $nuevoDueno->id
+                ]);
+                $sql = DB::table('vehiculos')
                 ->where('id', $request->textoid)
                 ->update([
                     'dueno_actual_id' => $nuevoDueno->id,
                     'precio' => $request->textoprecio
                 ]);
-
-            DB::table('historico_duenos')->insert([
-                'vehiculo_id' => $request->textoid,
-                'dueno_id' => $nuevoDueno->id
-            ]);
+            }
+            else{
+                $sql = DB::table('vehiculos')
+                ->where('id', $request->textoid)
+                ->update([
+                    'precio' => $request->textoprecio
+                ]);
+            }
         } catch (\Exception $e) {
             $sql = 0;
         }
