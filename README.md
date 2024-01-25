@@ -1,7 +1,3 @@
-Claro, estaré encantado de ayudarte a redactar un README profesional. Aquí tienes una versión mejorada:
-
----
-
 # Rebits_CRUD_Test
 
 Este proyecto es parte de la prueba de postulación para Rebits y se centra en el desarrollo de un sistema CRUD (Create, Read, Update, Delete) utilizando diversas tecnologías. No se hace uso de DELETE (opcional), dado que las consultas mediante QueryBuilder, por temas de tiempo no se utilizaron modelos y migracion por lo que no se opto utilizar DELETE (soft deleting)
