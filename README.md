@@ -4,7 +4,7 @@ Claro, estaré encantado de ayudarte a redactar un README profesional. Aquí tie
 
 # Rebits_CRUD_Test
 
-Este proyecto es parte de la prueba de postulación para Rebits y se centra en el desarrollo de un sistema CRUD (Create, Read, Update, Delete) utilizando diversas tecnologías.
+Este proyecto es parte de la prueba de postulación para Rebits y se centra en el desarrollo de un sistema CRUD (Create, Read, Update, Delete) utilizando diversas tecnologías. No se hace uso de DELETE (opcional), dado que las consultas mediante QueryBuilder, por temas de tiempo no se utilizaron modelos y migracion por lo que no se opto utilizar DELETE (soft deleting)
 
 ## Tecnologías Utilizadas
 
@@ -30,8 +30,9 @@ Este proyecto es parte de la prueba de postulación para Rebits y se centra en e
    ```
    El servidor estará disponible en `http://localhost:8000`.
 
-## Consideraciones PostgreSQL
+## Importantes Consideraciones en PostgreSQL
 
+Se hizo uso de un PostgreSQL en donde se genero la base de datos de manera local, a continuacion se mostrara como se crearon estas tablas y sus relaciones.
 Para la base de datos se crearon las siguientes tablas
 
 ```sql
